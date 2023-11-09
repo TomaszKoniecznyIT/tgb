@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 
+import classes from "./MainNavigation.module.css";
+
 function MainNavigation() {
   return (
-    <header>
+    <header className={classes.header}>
       <nav>
-        <ul>
+        <ul className={classes.list}>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
