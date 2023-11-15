@@ -5,6 +5,7 @@ import ManagerPage from "./pages/Manager";
 import ShopPage from "./pages/Shop";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
+import AuthenticationPage from "./pages/Authentication";
 
 const router = createBrowserRouter([
   {
@@ -13,11 +14,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <HomePage />,
       },
       { path: "manager", element: <ManagerPage /> },
       { path: "shop", element: <ShopPage /> },
+      { path: "auth", element: <AuthenticationPage /> },
     ],
   },
 ]);
