@@ -39,12 +39,12 @@ function MainNavigation() {
           </li>
           <li>
             <NavLink
-              to="/auth?mode=login"
+              to="/auth/singup"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
             >
-              Authentication
+              Singup
             </NavLink>
           </li>
         </ul>
