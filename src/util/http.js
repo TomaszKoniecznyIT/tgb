@@ -1,8 +1,10 @@
-export async function createNewUser(usetData) {
-  const url = "http://127.0.0.1:5000/users/signup";
-  const response = await fetch(url, {
+export async function createNewUser(userData) {
+  const response = await fetch("http://127.0.0.1:5000/users/signup", {
     method: "POST",
-    body: JSON.stringify(usetData),
+    body: JSON.stringify(userData),
     headers: { "Content-Type": "application/json" },
   });
+
+  const res = await response.json();
+  return console.log(res);
 }
