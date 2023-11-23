@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import HomePage from "./pages/Home";
 import ManagerPage from "./pages/Manager";
@@ -6,7 +7,7 @@ import ShopPage from "./pages/Shop";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import SingupPage from "./pages/Singup";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import LoginPage from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "manager", element: <ManagerPage /> },
       { path: "shop", element: <ShopPage /> },
       { path: "auth/singup", element: <SingupPage /> },
+      { path: "auth/login", element: <LoginPage /> },
     ],
   },
 ]);

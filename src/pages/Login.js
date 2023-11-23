@@ -1,7 +1,7 @@
-import NewUserForm from "../components/NewUserForm";
+import LoginForm from "../components/LoginForm";
 
-function SingupPage() {
-  return <NewUserForm />;
+function LoginPage() {
+  return <LoginForm />;
 }
 
-export default SingupPage;
+export default LoginPage;
