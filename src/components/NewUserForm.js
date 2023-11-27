@@ -27,6 +27,15 @@ function NewUserForm() {
           <label htmlFor="password">Password</label>
           <input id="password" type="password" name="password" required />
         </p>
+        <p>
+          <label htmlFor="confirm_password">Confirm Password</label>
+          <input
+            id="confirm_password"
+            type="password"
+            name="confirm_password"
+            required
+          />
+        </p>
         <div className={classes.actions}>
           <button type="submit">Save</button>
         </div>

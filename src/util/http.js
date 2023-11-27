@@ -5,8 +5,9 @@ export async function createNewUser(userData) {
     headers: { "Content-Type": "application/json" },
   });
 
-  const res = await response.json();
-  return console.log(res);
+  const { message } = await response.json();
+  console.log(message);
+  return message;
 }
 
 export async function login(userData) {
@@ -16,6 +17,14 @@ export async function login(userData) {
     headers: { "Content-Type": "application/json" },
   });
 
-  const res = await response.json();
-  return console.log(res);
+  if (!response.ok) {
+    const error = new Error("An error occurred while logging in");
+    error.code = response.status;
+    error.message = await response.json();
+    throw error;
+  }
+
+  const { message } = await response.json();
+  console.log(message);
+  return message;
 }

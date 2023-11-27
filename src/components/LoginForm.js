@@ -1,11 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { createNewUser } from "../util/http";
+import { login } from "../util/http";
 import classes from "./NewUserForm.module.css";
 
 function LoginForm() {
   const { mutate } = useMutation({
-    mutationFn: createNewUser,
+    mutationFn: login,
   });
 
   function handleSubmit(event) {
