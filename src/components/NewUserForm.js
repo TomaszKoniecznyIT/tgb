@@ -1,5 +1,6 @@
-import classes from "./NewUserForm.module.css";
 import { Form } from "react-router-dom";
+
+import classes from "./NewUserForm.module.css";
 
 function NewUserForm() {
   return (
