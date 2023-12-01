@@ -1,23 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
+import { Form } from "react-router-dom";
 
-import { login } from "../util/http";
 import classes from "./NewUserForm.module.css";
 
 function LoginForm() {
-  const { mutate } = useMutation({
-    mutationFn: login,
-  });
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const userData = Object.fromEntries(formData);
-    mutate(userData);
-  }
-
   return (
     <>
-      <form className={classes.form} onSubmit={handleSubmit}>
+      <Form method="post" className={classes.form}>
         <h1>Login</h1>
         <p>
           <label htmlFor="email">Email</label>
@@ -30,7 +18,7 @@ function LoginForm() {
         <div className={classes.actions}>
           <button type="submit">Login</button>
         </div>
-      </form>
+      </Form>
     </>
   );
 }
