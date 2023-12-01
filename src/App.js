@@ -6,7 +6,7 @@ import ManagerPage from "./pages/Manager";
 import ShopPage from "./pages/Shop";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
-import SingupPage from "./pages/Singup";
+import SingupPage, { action as addNewUserAction } from "./pages/Singup";
 import LoginPage from "./pages/Login";
 
 const router = createBrowserRouter([
@@ -21,7 +21,11 @@ const router = createBrowserRouter([
       },
       { path: "manager", element: <ManagerPage /> },
       { path: "shop", element: <ShopPage /> },
-      { path: "auth/singup", element: <SingupPage /> },
+      {
+        path: "auth/singup",
+        element: <SingupPage />,
+        action: addNewUserAction,
+      },
       { path: "auth/login", element: <LoginPage /> },
     ],
   },

@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 export async function createNewUser(userData) {
   const response = await fetch("http://127.0.0.1:5000/users/signup", {
     method: "POST",
@@ -5,9 +7,10 @@ export async function createNewUser(userData) {
     headers: { "Content-Type": "application/json" },
   });
 
-  const { message } = await response.json();
-  console.log(message);
-  return message;
+  const resData = await response.json();
+  console.log(resData.message);
+
+  return resData.message;
 }
 
 export async function login(userData) {
@@ -24,7 +27,11 @@ export async function login(userData) {
     throw error;
   }
 
-  const { message } = await response.json();
-  console.log(message);
-  return message;
+  const resData = await response.json();
+
+  const token = resData.token;
+  console.log(resData);
+  localStorage.setItem("token", token);
+
+  return resData.message;
 }
