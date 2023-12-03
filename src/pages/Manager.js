@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ManagerPage() {
   return (
     <>
@@ -5,7 +7,7 @@ function ManagerPage() {
         <h1>Menager Page</h1>
       </div>
       <div>
-        <h3>Add a new shop</h3>
+        <Link to="new_shop">Add a new shop</Link>
         <h3>Add a monthly target for shop</h3>
         <h3>Report</h3>
       </div>
