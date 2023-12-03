@@ -2,7 +2,7 @@ function ShopPage() {
   return (
     <>
       <div>
-        <h1>Shop Page</h1>;
+        <h1>Shop Page</h1>
       </div>
       <div>
         <h3>Add daily sales</h3>

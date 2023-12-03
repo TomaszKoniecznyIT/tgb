@@ -8,6 +8,7 @@ import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import SingupPage, { action as addNewUserAction } from "./pages/Singup";
 import LoginPage, { action as loginAction } from "./pages/Login";
+import { action as logoutAction } from "./pages/Logout";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
         action: addNewUserAction,
       },
       { path: "auth/login", element: <LoginPage />, action: loginAction },
+      { path: "logout", action: logoutAction },
     ],
   },
 ]);

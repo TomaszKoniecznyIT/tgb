@@ -2,7 +2,7 @@ function ManagerPage() {
   return (
     <>
       <div>
-        <h1>Menager Page</h1>;
+        <h1>Menager Page</h1>
       </div>
       <div>
         <h3>Add a new shop</h3>
