@@ -35,6 +35,9 @@ export async function login(userData) {
   const is_manager = jwtDecode(token).is_manager;
   localStorage.setItem("is_manager", is_manager);
   console.log(is_manager);
+  const expiration = jwtDecode(token).expiration;
+  localStorage.setItem("experation", expiration);
+  console.log(expiration);
 
   return resData.message;
 }

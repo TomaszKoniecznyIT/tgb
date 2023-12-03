@@ -9,12 +9,15 @@ import ErrorPage from "./pages/Error";
 import SingupPage, { action as addNewUserAction } from "./pages/Singup";
 import LoginPage, { action as loginAction } from "./pages/Login";
 import { action as logoutAction } from "./pages/Logout";
+import { tokenLoader } from "./util/auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    id: "root",
+    loader: tokenLoader,
     children: [
       {
         index: true,
