@@ -49,16 +49,18 @@ function MainNavigation() {
               Singup
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/auth/login"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Login
-            </NavLink>
-          </li>
+          {!token && (
+            <li>
+              <NavLink
+                to="/auth/login"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Login
+              </NavLink>
+            </li>
+          )}
           {token && (
             <li>
               <Form action="/logout" method="post">
