@@ -10,7 +10,7 @@ import SingupPage, { action as addNewUserAction } from "./pages/Singup";
 import LoginPage, { action as loginAction } from "./pages/Login";
 import { action as logoutAction } from "./pages/Logout";
 import { checkAuthLoader, tokenLoader } from "./util/auth";
-import NewShopPage from "./pages/NewShop";
+import NewShopPage, { action as addNewShopAction } from "./pages/NewShop";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,11 @@ const router = createBrowserRouter([
         loader: checkAuthLoader,
         children: [
           { index: true, element: <ManagerPage /> },
-          { path: "new_shop", element: <NewShopPage /> },
+          {
+            path: "new_shop",
+            element: <NewShopPage />,
+            action: addNewShopAction,
+          },
         ],
       },
       { path: "shop", element: <ShopPage />, loader: checkAuthLoader },
