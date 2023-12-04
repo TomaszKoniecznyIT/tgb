@@ -1,5 +1,7 @@
+import TargetForm from "../components/TargetForm";
+
 function TargetPage() {
-  return <h1>Target page</h1>;
+  return <TargetForm />;
 }
 
 export default TargetPage;
