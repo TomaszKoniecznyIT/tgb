@@ -7,8 +7,12 @@ function ManagerPage() {
         <h1>Menager Page</h1>
       </div>
       <div>
-        <Link to="new_shop">Add a new shop</Link>
-        <h3>Add a monthly target for shop</h3>
+        <p>
+          <Link to="new_shop">Add a new shop</Link>
+        </p>
+        <p>
+          <Link to="target">Add a monthly target for shop</Link>
+        </p>
         <h3>Report</h3>
       </div>
     </>
