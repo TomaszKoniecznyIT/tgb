@@ -1,5 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import { getAuthToken } from "./auth";
+import { json } from "react-router-dom";
 
 export async function createNewUser(userData) {
   const response = await fetch("http://127.0.0.1:5000/users/signup", {
@@ -59,4 +60,14 @@ export async function createNewShop(shopData) {
   console.log(resData.message);
 
   return resData.message;
+}
+
+export async function getShop() {
+  const response = await fetch("http://127.0.0.1:5000/shops_list");
+
+  if (!response.ok) {
+    throw json({ message: "Could not fetch shops" }, { status: 500 });
+  } else {
+    return response;
+  }
 }
