@@ -22,13 +22,6 @@ export async function login(userData) {
     headers: { "Content-Type": "application/json" },
   });
 
-  if (!response.ok) {
-    const error = new Error("An error occurred while logging in");
-    error.code = response.status;
-    error.message = await response.json();
-    throw error;
-  }
-
   const resData = await response.json();
 
   const token = resData.token;
@@ -67,6 +60,16 @@ export async function getShop() {
 
   if (!response.ok) {
     throw json({ message: "Could not fetch shops" }, { status: 500 });
+  } else {
+    return response;
+  }
+}
+
+export async function getShopTarget() {
+  const response = await fetch("http://127.0.0.1:5000/shops_targets");
+
+  if (!response.ok) {
+    throw json({ message: "Could not fetch shops targets" }, { status: 500 });
   } else {
     return response;
   }

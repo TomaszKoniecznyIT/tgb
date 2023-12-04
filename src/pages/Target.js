@@ -1,16 +1,16 @@
 import { json, useLoaderData } from "react-router-dom";
 import TargetForm from "../components/TargetForm";
-import { getShop } from "../util/http";
+import { getShop, getShopTarget } from "../util/http";
+import TargetDetails from "../components/TargetDetails";
 
 function TargetPage() {
   const data = useLoaderData();
-  console.log(data);
-  return <TargetForm shops={data.shops} />;
+  return <TargetDetails targets={data.targets} />;
 }
 
 export default TargetPage;
 
 export async function loader() {
-  const response = getShop();
+  const response = getShopTarget();
   return response;
 }
