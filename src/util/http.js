@@ -65,6 +65,16 @@ export async function getShops() {
   }
 }
 
+export async function getShop(id) {
+  const response = await fetch("http://127.0.0.1:5000/shops/" + id);
+
+  if (!response.ok) {
+    throw json({ message: "Could not fetch shops" }, { status: 500 });
+  } else {
+    return response;
+  }
+}
+
 export async function getShopTarget() {
   const response = await fetch("http://127.0.0.1:5000/shops_targets");
 

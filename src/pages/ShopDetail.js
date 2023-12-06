@@ -1,14 +1,22 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import { getShop } from "../util/http";
+import ShopItem from "../components/ShopItem";
 
 function ShopDetailPage() {
-  const params = useParams();
-  console.log(params);
+  const data = useLoaderData();
+
   return (
     <>
-      <h1>Event detail page</h1>
-      <p>shop ID: {params.shopId} </p>
+      <ShopItem shop={data.shop} />
     </>
   );
 }
 
 export default ShopDetailPage;
+
+export async function loader({ request, params }) {
+  const id = params.shopId;
+
+  const response = getShop(id);
+  return response;
+}
