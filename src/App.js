@@ -12,6 +12,7 @@ import { action as logoutAction } from "./pages/Logout";
 import { checkAuthLoader, tokenLoader } from "./util/auth";
 import NewShopPage, { action as addNewShopAction } from "./pages/NewShop";
 import ManagerShopsPage, { loader as shopsLoader } from "./pages/ManagerShops";
+import ShopDetailPage from "./pages/ShopDetail";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,17 @@ const router = createBrowserRouter([
             element: <NewShopPage />,
             action: addNewShopAction,
           },
-          { path: "shops", element: <ManagerShopsPage />, loader: shopsLoader },
+          {
+            path: "shops",
+            children: [
+              {
+                index: true,
+                element: <ManagerShopsPage />,
+                loader: shopsLoader,
+              },
+              { path: ":shopId", element: <ShopDetailPage /> },
+            ],
+          },
         ],
       },
       { path: "shop", element: <ShopPage />, loader: checkAuthLoader },
