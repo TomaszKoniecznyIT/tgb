@@ -55,7 +55,7 @@ export async function createNewShop(shopData) {
   return resData.message;
 }
 
-export async function getShop() {
+export async function getShops() {
   const response = await fetch("http://127.0.0.1:5000/shops_list");
 
   if (!response.ok) {

@@ -11,8 +11,7 @@ import LoginPage, { action as loginAction } from "./pages/Login";
 import { action as logoutAction } from "./pages/Logout";
 import { checkAuthLoader, tokenLoader } from "./util/auth";
 import NewShopPage, { action as addNewShopAction } from "./pages/NewShop";
-import TargetPage, { loader as loaderShopsTarget } from "./pages/Target";
-import TargetEditPage, { loader as loaderShops } from "./pages/TargetEdit";
+import ManagerShopsPage, { loader as shopsLoader } from "./pages/ManagerShops";
 
 const router = createBrowserRouter([
   {
@@ -36,22 +35,7 @@ const router = createBrowserRouter([
             element: <NewShopPage />,
             action: addNewShopAction,
           },
-          {
-            path: "target",
-
-            children: [
-              {
-                index: true,
-                element: <TargetPage />,
-                loader: loaderShopsTarget,
-              },
-              {
-                path: "edit",
-                element: <TargetEditPage />,
-                loader: loaderShops,
-              },
-            ],
-          },
+          { path: "shops", element: <ManagerShopsPage />, loader: shopsLoader },
         ],
       },
       { path: "shop", element: <ShopPage />, loader: checkAuthLoader },

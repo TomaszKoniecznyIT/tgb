@@ -11,9 +11,8 @@ function ManagerPage() {
           <Link to="new_shop">Add a new shop</Link>
         </p>
         <p>
-          <Link to="target">Add a monthly target for shop</Link>
+          <Link to="shops">Show all shops.</Link>
         </p>
-        <h3>Report</h3>
       </div>
     </>
   );
