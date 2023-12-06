@@ -5,11 +5,16 @@ function ShopItem({ shop }) {
   return (
     <div>
       <h1>SHOP DETAILS</h1>
-      <h2>{shop.name}</h2>
-      <p>{shop.email}</p>
-      <p>{shop.shop_code}</p>
-      {is_manager && <button>Add Target</button>}
-      {!is_manager && <button>Add Sale</button>}
+      <div>
+        <h2>{shop.name}</h2>
+        <p>{shop.email}</p>
+        <p>{shop.shop_code}</p>
+      </div>
+      <div>
+        {is_manager && <button>Add Target</button>}
+        {!is_manager && <button>Add Sale</button>}
+      </div>
+      <button>Raport</button>
     </div>
   );
 }
