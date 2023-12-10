@@ -14,7 +14,7 @@ function ShopItem({ shop }) {
         {is_manager && <button>Add Target</button>}
         {!is_manager && <button>Add Sale</button>}
       </div>
-      <button>Raport</button>
+      <button>Report</button>
     </div>
   );
 }
