@@ -1,21 +1,47 @@
+import { useState } from "react";
+import Modal from "./Modal";
+
 function ShopItem({ shop }) {
+  const [isAddingSales, setIsAddingSales] = useState(false);
+
   const is_manager =
     localStorage.getItem("is_manager") === "true" ? true : false;
 
+  function handleStartAddSale() {
+    console.log("start");
+    setIsAddingSales(true);
+  }
+
+  function handleStopAddSale() {
+    console.log("stop");
+    setIsAddingSales(false);
+  }
+
+  console.log(isAddingSales);
   return (
-    <div>
-      <h1>SHOP DETAILS</h1>
+    <>
+      {isAddingSales && (
+        <Modal isOpen={isAddingSales} onClose={handleStopAddSale}>
+          <p>gjahsgfj</p>
+          <button onClick={handleStopAddSale}>Cancel</button>
+        </Modal>
+      )}
       <div>
-        <h2>{shop.name}</h2>
-        <p>{shop.email}</p>
-        <p>{shop.shop_code}</p>
+        <h1>SHOP DETAILS</h1>
+        <div>
+          <h2>{shop.name}</h2>
+          <p>{shop.email}</p>
+          <p>{shop.shop_code}</p>
+        </div>
+        <div>
+          {is_manager && <button>Add Target</button>}
+          {!is_manager && (
+            <button onClick={handleStartAddSale}>Add Sale</button>
+          )}
+        </div>
+        <button>Report</button>
       </div>
-      <div>
-        {is_manager && <button>Add Target</button>}
-        {!is_manager && <button>Add Sale</button>}
-      </div>
-      <button>Report</button>
-    </div>
+    </>
   );
 }
 
