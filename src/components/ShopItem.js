@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "./Modal";
+import DailySale from "./DailySales";
 
 function ShopItem({ shop }) {
   const [isAddingSales, setIsAddingSales] = useState(false);
@@ -22,8 +23,7 @@ function ShopItem({ shop }) {
     <>
       {isAddingSales && (
         <Modal isOpen={isAddingSales} onClose={handleStopAddSale}>
-          <p>gjahsgfj</p>
-          <button onClick={handleStopAddSale}>Cancel</button>
+          <DailySale />
         </Modal>
       )}
       <div>
