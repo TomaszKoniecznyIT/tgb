@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 import HomePage from "./pages/Home";
 import ManagerPage from "./pages/Manager";
@@ -15,6 +15,7 @@ import ManagerShopsPage, { loader as shopsLoader } from "./pages/ManagerShops";
 import ShopDetailPage, { loader as shopLoader } from "./pages/ShopDetail";
 import TargetPage from "./pages/Target";
 import SalePage from "./pages/Sale";
+import { queryClient } from "./util/http.js";
 
 const router = createBrowserRouter([
   {
@@ -73,8 +74,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-const queryClient = new QueryClient();
 
 function App() {
   return (

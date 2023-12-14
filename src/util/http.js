@@ -1,6 +1,9 @@
 import { jwtDecode } from "jwt-decode";
 import { getAuthToken } from "./auth";
 import { json } from "react-router-dom";
+import { QueryClient } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient();
 
 export async function createNewUser(userData) {
   const response = await fetch("http://127.0.0.1:5000/users/signup", {
@@ -83,4 +86,21 @@ export async function getShopTarget() {
   } else {
     return response;
   }
+}
+
+export async function getSaleForDay({ id, day, signal }) {
+  console.log("ssss", day);
+  const response = await fetch(
+    `http://127.0.0.1:5000/shops/${id}/sale/${day}`,
+    {
+      signal,
+    }
+  );
+
+  if (!response.ok) {
+    throw json({ message: "Could not fetch shops sale" }, { status: 500 });
+  }
+
+  const { sale } = await response.json();
+  return sale;
 }
