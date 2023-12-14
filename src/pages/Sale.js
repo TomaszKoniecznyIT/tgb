@@ -1,5 +1,7 @@
+import SaleShopForm from "../components/SaleShopForm";
+
 function SalePage() {
-  return <h1>Sale</h1>;
+  return <SaleShopForm />;
 }
 
 export default SalePage;
