@@ -41,7 +41,6 @@ export async function login(userData) {
 
 export async function createNewShop(shopData) {
   const token = getAuthToken();
-  console.log(token);
 
   const response = await fetch("http://127.0.0.1:5000/new_shop", {
     method: "POST",
@@ -78,24 +77,18 @@ export async function getShop(id) {
   }
 }
 
-export async function getShopTarget() {
-  const response = await fetch("http://127.0.0.1:5000/shops_targets");
+// export async function getShopTarget() {
+//   const response = await fetch("http://127.0.0.1:5000/shops_targets");
 
-  if (!response.ok) {
-    throw json({ message: "Could not fetch shops targets" }, { status: 500 });
-  } else {
-    return response;
-  }
-}
+//   if (!response.ok) {
+//     throw json({ message: "Could not fetch shops targets" }, { status: 500 });
+//   } else {
+//     return response;
+//   }
+// }
 
-export async function getSaleForDay({ id, day, signal }) {
-  console.log("ssss", day);
-  const response = await fetch(
-    `http://127.0.0.1:5000/shops/${id}/sale/${day}`,
-    {
-      signal,
-    }
-  );
+export async function getSaleForDay({ id, day }) {
+  const response = await fetch(`http://127.0.0.1:5000/shops/${id}/sale/${day}`);
 
   if (!response.ok) {
     throw json({ message: "Could not fetch shops sale" }, { status: 500 });
@@ -103,4 +96,22 @@ export async function getSaleForDay({ id, day, signal }) {
 
   const { sale } = await response.json();
   return sale;
+}
+
+export async function addDailySale(saleShopData) {
+  const token = getAuthToken();
+
+  const response = await fetch("", {
+    method: "POST",
+    body: JSON.stringify(saleShopData),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  const resData = await response.json();
+  console.log(resData.message);
+
+  return resData.message;
 }
