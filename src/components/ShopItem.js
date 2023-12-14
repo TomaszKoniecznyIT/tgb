@@ -23,7 +23,7 @@ function ShopItem({ shop }) {
     <>
       {isAddingSales && (
         <Modal isOpen={isAddingSales} onClose={handleStopAddSale}>
-          <DailySale onClose={handleStopAddSale} />
+          <DailySale onClose={handleStopAddSale} shopId={shop.id} />
         </Modal>
       )}
       <div>

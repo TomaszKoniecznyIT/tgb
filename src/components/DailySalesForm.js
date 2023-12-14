@@ -1,6 +1,7 @@
 import { Form } from "react-router-dom";
 
-export default function DailySale({ onClose }) {
+export default function DailySale({ onClose, shopId }) {
+  // const method = ? 'put' : 'post' --- method={method}
   return (
     <Form>
       <h1>Daily Sale</h1>
