@@ -13,6 +13,8 @@ import { checkAuthLoader, tokenLoader } from "./util/auth";
 import NewShopPage, { action as addNewShopAction } from "./pages/NewShop";
 import ManagerShopsPage, { loader as shopsLoader } from "./pages/ManagerShops";
 import ShopDetailPage, { loader as shopLoader } from "./pages/ShopDetail";
+import TargetPage from "./pages/Target";
+import SalePage from "./pages/Sale";
 
 const router = createBrowserRouter([
   {
@@ -46,8 +48,15 @@ const router = createBrowserRouter([
               },
               {
                 path: ":shopId",
-                element: <ShopDetailPage />,
-                loader: shopLoader,
+                children: [
+                  {
+                    index: true,
+                    element: <ShopDetailPage />,
+                    loader: shopLoader,
+                  },
+                  { path: "target", element: <TargetPage /> },
+                  { path: "sale", element: <SalePage /> },
+                ],
               },
             ],
           },

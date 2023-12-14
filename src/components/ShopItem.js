@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ShopItem({ shop }) {
   const is_manager =
     localStorage.getItem("is_manager") === "true" ? true : false;
@@ -11,8 +13,8 @@ function ShopItem({ shop }) {
         <p>{shop.shop_code}</p>
       </div>
       <div>
-        {is_manager && <button>Add Target</button>}
-        {!is_manager && <button>Add Sale</button>}
+        {is_manager && <Link to="target">Add Target</Link>}
+        {!is_manager && <Link to="sale">Add Sale</Link>}
       </div>
       <button>Report</button>
     </div>
