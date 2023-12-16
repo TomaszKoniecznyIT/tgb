@@ -21,13 +21,31 @@ function SaleShopForm() {
     setDay(new Date(dateValue).toISOString().slice(0, 10));
   }
 
+  function handlePreviousDay() {
+    const newDay = new Date(day);
+    setDay(
+      new Date(newDay.setDate(newDay.getDate() - 1)).toISOString().slice(0, 10)
+    );
+  }
+
+  function handleNextDay() {
+    const newDay = new Date(day);
+    setDay(
+      new Date(newDay.setDate(newDay.getDate() + 1)).toISOString().slice(0, 10)
+    );
+  }
+
   return (
     <>
       <Form method="post" className={classes.form}>
         <h1>Daily Sales</h1>
         <div>
-          <button>previous day</button>
-          <button>next day</button>
+          <button type="button" onClick={handlePreviousDay}>
+            previous day
+          </button>
+          <button type="button" onClick={handleNextDay}>
+            next day
+          </button>
         </div>
         <div>
           <p>
@@ -37,7 +55,7 @@ function SaleShopForm() {
               id="date"
               type="date"
               name="date"
-              defaultValue={day}
+              value={day}
               required
             />
           </p>
