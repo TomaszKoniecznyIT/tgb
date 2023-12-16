@@ -87,8 +87,11 @@ export async function getShop(id) {
 //   }
 // }
 
-export async function getSaleForDay({ id, day }) {
-  const response = await fetch(`http://127.0.0.1:5000/shops/${id}/sale/${day}`);
+export async function getSaleForDay({ id, day, signal }) {
+  const response = await fetch(
+    `http://127.0.0.1:5000/shops/${id}/sale?day=${day}`,
+    { signal }
+  );
 
   if (!response.ok) {
     throw json({ message: "Could not fetch shops sale" }, { status: 500 });
@@ -101,7 +104,7 @@ export async function getSaleForDay({ id, day }) {
 export async function addDailySale(saleShopData) {
   const token = getAuthToken();
 
-  const response = await fetch("", {
+  const response = await fetch("http://127.0.0.1:5000/shops/sale", {
     method: "POST",
     body: JSON.stringify(saleShopData),
     headers: {
