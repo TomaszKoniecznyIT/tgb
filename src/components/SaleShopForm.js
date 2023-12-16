@@ -1,9 +1,9 @@
 import { Form, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { getSaleForDay } from "../util/http";
 
 import classes from "./SaleShopForm.module.css";
-import { useQuery } from "@tanstack/react-query";
-import { getSaleForDay } from "../util/http";
-import { useState } from "react";
 
 function SaleShopForm() {
   const params = useParams();
@@ -59,15 +59,14 @@ function SaleShopForm() {
               required
             />
           </p>
+          {data && (
+            <div>
+              <h2>The current saved value for that day is: {data.total}</h2>
+            </div>
+          )}
           <p>
             <label htmlFor="number">Daily Sales</label>
-            <input
-              id="number"
-              type="number"
-              name="number"
-              value={data?.total}
-              required
-            />
+            <input id="number" type="number" name="number" required />
           </p>
         </div>
         <div className={classes.actions}>
