@@ -37,7 +37,7 @@ function SaleShopForm() {
 
   return (
     <>
-      <Form method="post" className={classes.form}>
+      <Form method="put" className={classes.form}>
         <h1>Daily Sales</h1>
         <div>
           <button type="button" onClick={handlePreviousDay}>

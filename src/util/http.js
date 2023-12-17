@@ -105,7 +105,7 @@ export async function addDailySale(saleShopData) {
   const token = getAuthToken();
 
   const response = await fetch("http://127.0.0.1:5000/shops/sale", {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify(saleShopData),
     headers: {
       "Content-Type": "application/json",
