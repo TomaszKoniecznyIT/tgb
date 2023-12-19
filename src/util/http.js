@@ -120,13 +120,31 @@ export async function addDailySale(saleShopData) {
 }
 
 export async function getTargetForMonth({ id, month, signal }) {
-  //   const response = await fetch(
-  //     `http://127.0.0.1:5000/shops/${id}/target?month=${month}`,
-  //     { signal }
-  //   );
-  //   if (!response.ok) {
-  //     throw json({ message: "Could not fetch shops target" }, { status: 500 });
-  //   }
-  //   const { target } = await response.json();
-  //   return target;
+  const response = await fetch(
+    `http://127.0.0.1:5000/shops/${id}/target?month=${month}`,
+    { signal }
+  );
+  if (!response.ok) {
+    throw json({ message: "Could not fetch shops target" }, { status: 500 });
+  }
+  const { target } = await response.json();
+  return target;
+}
+
+export async function addMonthlyTarget(saleShopData) {
+  const token = getAuthToken();
+
+  const response = await fetch("http://127.0.0.1:5000/shops/target", {
+    method: "PUT",
+    body: JSON.stringify(saleShopData),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  const resData = await response.json();
+  console.log(resData.message);
+
+  return resData.message;
 }
