@@ -13,7 +13,7 @@ import { checkAuthLoader, tokenLoader } from "./util/auth";
 import NewShopPage, { action as addNewShopAction } from "./pages/NewShop";
 import ManagerShopsPage, { loader as shopsLoader } from "./pages/ManagerShops";
 import ShopDetailPage, { loader as shopLoader } from "./pages/ShopDetail";
-import TargetPage from "./pages/Target";
+import TargetPage, { action as addTarget } from "./pages/Target";
 import SalePage, { action as addSale } from "./pages/Sale";
 import { queryClient } from "./util/http.js";
 
@@ -55,7 +55,11 @@ const router = createBrowserRouter([
                     element: <ShopDetailPage />,
                     loader: shopLoader,
                   },
-                  { path: "target", element: <TargetPage /> },
+                  {
+                    path: "target",
+                    element: <TargetPage />,
+                    action: addTarget,
+                  },
                   { path: "sale", element: <SalePage />, action: addSale },
                 ],
               },
