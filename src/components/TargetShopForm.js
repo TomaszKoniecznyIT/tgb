@@ -1,5 +1,5 @@
-import { Form, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { Form, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getTargetForMonth } from "../util/http";
 
@@ -7,31 +7,38 @@ import classes from "./TargetShopForm.module.css";
 
 function TargetShopForm() {
   const params = useParams();
-  const [month, setMonth] = useState(new Date().toISOString().slice(0, 7));
-
+  const [monthTraget, setMonthTarget] = useState(
+    new Date().toISOString().slice(0, 7)
+  );
+  console.log(monthTraget);
   const { data } = useQuery({
-    queryKey: ["target", params.shopId, month],
+    queryKey: ["target", params.shopId, monthTraget],
     queryFn: ({ signal }) =>
-      getTargetForMonth({ signal, id: params.shopId, month: month }),
+      getTargetForMonth({ signal, id: params.shopId, month: monthTraget }),
   });
 
   function handleOnChange(event) {
     const dateValue = event.target.value;
     console.log(dateValue, typeof dateValue);
-    setMonth(new Date(dateValue).toISOString().slice(0, 7));
+    setMonthTarget(new Date(dateValue).toISOString().slice(0, 7));
   }
 
-  function handlePreviousDay() {
-    const newDay = new Date(month);
-    setMonth(
-      new Date(newDay.setDate(newDay.getMonth() - 1)).toISOString().slice(0, 7)
+  function handlePreviousMonth() {
+    console.log("as", monthTraget);
+
+    const newDay = new Date(monthTraget);
+    console.log(newDay);
+    setMonthTarget(
+      new Date(newDay.setMonth(newDay.getMonth() - 1)).toISOString().slice(0, 7)
     );
+    console.log("a", monthTraget);
   }
 
-  function handleNextDay() {
-    const newDay = new Date(month);
-    setMonth(
-      new Date(newDay.setDate(newDay.getMonth() + 1)).toISOString().slice(0, 7)
+  function handleNextMonth() {
+    const newDay = new Date(monthTraget);
+    console.log(newDay);
+    setMonthTarget(
+      new Date(newDay.setMonth(newDay.getMonth() + 1)).toISOString().slice(0, 7)
     );
   }
 
@@ -40,10 +47,10 @@ function TargetShopForm() {
       <Form method="put" className={classes.form}>
         <h1>Monthly Target</h1>
         <div>
-          <button type="button" onClick={handlePreviousDay}>
+          <button type="button" onClick={handlePreviousMonth}>
             previous month
           </button>
-          <button type="button" onClick={handleNextDay}>
+          <button type="button" onClick={handleNextMonth}>
             next month
           </button>
         </div>
@@ -55,7 +62,7 @@ function TargetShopForm() {
               id="month"
               type="month"
               name="month"
-              value={month}
+              value={monthTraget}
               required
             />
           </p>

@@ -10,8 +10,8 @@ export default TargetPage;
 
 export async function action({ request, params }) {
   const formData = await request.formData();
-  const saleShopData = Object.fromEntries(formData);
-  saleShopData.id = params.shopId;
-  await addMonthlyTarget(saleShopData);
+  const targetShopData = Object.fromEntries(formData);
+  targetShopData.id = params.shopId;
+  await addMonthlyTarget(targetShopData);
   return redirect(`/manager/shops/${params.shopId}`);
 }
