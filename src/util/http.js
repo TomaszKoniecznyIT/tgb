@@ -118,3 +118,15 @@ export async function addDailySale(saleShopData) {
 
   return resData.message;
 }
+
+export async function getTargetForMonth({ id, month, signal }) {
+  //   const response = await fetch(
+  //     `http://127.0.0.1:5000/shops/${id}/target?month=${month}`,
+  //     { signal }
+  //   );
+  //   if (!response.ok) {
+  //     throw json({ message: "Could not fetch shops target" }, { status: 500 });
+  //   }
+  //   const { target } = await response.json();
+  //   return target;
+}
