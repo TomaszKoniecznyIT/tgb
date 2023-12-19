@@ -16,19 +16,19 @@ function TargetShopForm() {
   function handleOnChange(event) {
     const dateValue = event.target.value;
     console.log(dateValue, typeof dateValue);
-    setDay(new Date(dateValue).toISOString().slice(0, 7));
+    setMonth(new Date(dateValue).toISOString().slice(0, 7));
   }
 
   function handlePreviousDay() {
-    const newDay = new Date(day);
-    setDay(
+    const newDay = new Date(month);
+    setMonth(
       new Date(newDay.setDate(newDay.getMonth() - 1)).toISOString().slice(0, 7)
     );
   }
 
   function handleNextDay() {
-    const newDay = new Date(day);
-    setDay(
+    const newDay = new Date(month);
+    setMonth(
       new Date(newDay.setDate(newDay.getMonth() + 1)).toISOString().slice(0, 7)
     );
   }
@@ -53,13 +53,13 @@ function TargetShopForm() {
               id="month"
               type="month"
               name="month"
-              //   value={}
+              value={month}
               required
             />
           </p>
           {data && (
             <div>
-              <h2>The current target for this month is: {}</h2>
+              <h2>The current target for this month is: {data.target}</h2>
             </div>
           )}
           <p>
