@@ -7,32 +7,31 @@ import classes from "./SaleShopForm.module.css";
 
 function SaleShopForm() {
   const params = useParams();
-  const [day, setDay] = useState(new Date().toISOString().slice(0, 10));
+  const [day, setDay] = useState(new Date());
 
   const { data } = useQuery({
     queryKey: ["sales", params.shopId, day],
     queryFn: ({ signal }) =>
-      getSaleForDay({ signal, id: params.shopId, day: day }),
+      getSaleForDay({
+        signal,
+        id: params.shopId,
+        day: day.toISOString().slice(0, 10),
+      }),
   });
 
   function handleOnChange(event) {
     const dateValue = event.target.value;
-    console.log(dateValue, typeof dateValue);
-    setDay(new Date(dateValue).toISOString().slice(0, 10));
+    setDay(new Date(dateValue));
   }
 
   function handlePreviousDay() {
     const newDay = new Date(day);
-    setDay(
-      new Date(newDay.setDate(newDay.getDate() - 1)).toISOString().slice(0, 10)
-    );
+    setDay(new Date(newDay.setDate(newDay.getDate() - 1)));
   }
 
   function handleNextDay() {
     const newDay = new Date(day);
-    setDay(
-      new Date(newDay.setDate(newDay.getDate() + 1)).toISOString().slice(0, 10)
-    );
+    setDay(new Date(newDay.setDate(newDay.getDate() + 1)));
   }
 
   return (
@@ -55,7 +54,7 @@ function SaleShopForm() {
               id="date"
               type="date"
               name="date"
-              value={day}
+              value={day.toISOString().slice(0, 10)}
               required
             />
           </p>

@@ -7,39 +7,31 @@ import classes from "./TargetShopForm.module.css";
 
 function TargetShopForm() {
   const params = useParams();
-  const [monthTraget, setMonthTarget] = useState(
-    new Date().toISOString().slice(0, 7)
-  );
-  console.log(monthTraget);
+  const [monthTraget, setMonthTarget] = useState(new Date());
+
   const { data } = useQuery({
-    queryKey: ["target", params.shopId, monthTraget],
+    queryKey: ["target", params.shopId, monthTraget.toISOString().slice(0, 7)],
     queryFn: ({ signal }) =>
-      getTargetForMonth({ signal, id: params.shopId, month: monthTraget }),
+      getTargetForMonth({
+        signal,
+        id: params.shopId,
+        month: monthTraget.toISOString().slice(0, 7),
+      }),
   });
 
   function handleOnChange(event) {
     const dateValue = event.target.value;
-    console.log(dateValue, typeof dateValue);
-    setMonthTarget(new Date(dateValue).toISOString().slice(0, 7));
+    setMonthTarget(new Date(dateValue));
   }
 
   function handlePreviousMonth() {
-    console.log("as", monthTraget);
-
     const newDay = new Date(monthTraget);
-    console.log(newDay);
-    setMonthTarget(
-      new Date(newDay.setMonth(newDay.getMonth() - 1)).toISOString().slice(0, 7)
-    );
-    console.log("a", monthTraget);
+    setMonthTarget(new Date(newDay.setMonth(newDay.getMonth() - 1)));
   }
 
   function handleNextMonth() {
     const newDay = new Date(monthTraget);
-    console.log(newDay);
-    setMonthTarget(
-      new Date(newDay.setMonth(newDay.getMonth() + 1)).toISOString().slice(0, 7)
-    );
+    setMonthTarget(new Date(newDay.setMonth(newDay.getMonth() + 1)));
   }
 
   return (
@@ -62,7 +54,7 @@ function TargetShopForm() {
               id="month"
               type="month"
               name="month"
-              value={monthTraget}
+              value={monthTraget.toISOString().slice(0, 7)}
               required
             />
           </p>
