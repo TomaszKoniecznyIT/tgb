@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getTargetForMonth } from "../util/http";
 
+import classes from "./TargetShopForm.module.css";
+
 function TargetShopForm() {
   const params = useParams();
   const [month, setMonth] = useState(new Date().toISOString().slice(0, 7));
