@@ -13,5 +13,7 @@ export async function action({ request }) {
   const formData = await request.formData();
   const userData = Object.fromEntries(formData);
   await login(userData);
-  return redirect("/");
+  return redirect(
+    `${localStorage.getItem("is_manager") === "true" ? "/manager" : "/shop"}`
+  );
 }
