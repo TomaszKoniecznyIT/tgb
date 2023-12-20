@@ -19,26 +19,40 @@ function MainNavigation() {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/manager"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Manager
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/shop"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Shop
-            </NavLink>
-          </li>
+          {token && (
+            <>
+              <li>
+                <NavLink
+                  to="/manager"
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
+                  Manager
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/manager/shops"
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
+                  All Shops
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/shop"
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
+                  Shop
+                </NavLink>
+              </li>
+            </>
+          )}
           <li>
             <NavLink
               to="/auth/singup"
