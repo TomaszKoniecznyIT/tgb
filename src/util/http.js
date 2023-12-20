@@ -80,6 +80,16 @@ export async function getShop(id) {
   }
 }
 
+export async function getShopByEmail(email) {
+  const response = await fetch(`http://127.0.0.1:5000/shops/email/` + email);
+
+  if (!response.ok) {
+    throw json({ message: "Could not fetch shops" }, { status: 500 });
+  }
+  const { shop } = await response.json();
+  return shop;
+}
+
 export async function getSaleForDay({ id, day, signal }) {
   const response = await fetch(
     `http://127.0.0.1:5000/shops/${id}/sale?day=${day}`,
