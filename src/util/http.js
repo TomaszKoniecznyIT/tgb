@@ -33,6 +33,9 @@ export async function login(userData) {
   const is_manager = jwtDecode(token).is_manager;
   localStorage.setItem("is_manager", is_manager);
 
+  const user = jwtDecode(token).user;
+  localStorage.setItem("user_email", user);
+
   const expiration = jwtDecode(token).expiration;
   localStorage.setItem("expiration", expiration);
 
@@ -76,16 +79,6 @@ export async function getShop(id) {
     return response;
   }
 }
-
-// export async function getShopTarget() {
-//   const response = await fetch("http://127.0.0.1:5000/shops_targets");
-
-//   if (!response.ok) {
-//     throw json({ message: "Could not fetch shops targets" }, { status: 500 });
-//   } else {
-//     return response;
-//   }
-// }
 
 export async function getSaleForDay({ id, day, signal }) {
   const response = await fetch(

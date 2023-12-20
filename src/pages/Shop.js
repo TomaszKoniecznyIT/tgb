@@ -6,7 +6,6 @@ function ShopPage() {
       </div>
       <div>
         <h3>Shop Detail</h3>
-        <h3>Report</h3>
       </div>
     </>
   );
