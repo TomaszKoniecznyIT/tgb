@@ -60,12 +60,20 @@ function SaleShopForm() {
           </p>
           {data && (
             <div>
-              <h2>The current saved value for that day is: {data.total}</h2>
+              <h2>
+                The current saved value for that day is: {data.total.toFixed(2)}
+              </h2>
             </div>
           )}
           <p>
             <label htmlFor="number">Daily Sales</label>
-            <input id="number" type="number" name="number" required />
+            <input
+              id="number"
+              type="number"
+              name="number"
+              step="0.01"
+              required
+            />
           </p>
         </div>
         <div className={classes.actions}>
