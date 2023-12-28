@@ -21,7 +21,7 @@ function SaleShopForm() {
 
   function handleOnChange(event) {
     const dateValue = event.target.value;
-    setDay(new Date(dateValue));
+    if (dateValue != 0) setDay(new Date(dateValue));
   }
 
   function handlePreviousDay() {
