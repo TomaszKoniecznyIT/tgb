@@ -16,6 +16,7 @@ import ShopDetailPage, { loader as shopLoader } from "./pages/ShopDetail";
 import TargetPage, { action as addTarget } from "./pages/Target";
 import SalePage, { action as addSale } from "./pages/Sale";
 import { queryClient } from "./util/http.js";
+import RaportPage from "./pages/Raport.js";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
                     action: addTarget,
                   },
                   { path: "sale", element: <SalePage />, action: addSale },
+                  { path: "raport", element: <RaportPage /> },
                 ],
               },
             ],
