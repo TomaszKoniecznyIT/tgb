@@ -4,7 +4,14 @@ import NewShopForm from "../components/NewShopForm";
 import { createNewShop } from "../util/http";
 
 function NewShopPage() {
-  return <NewShopForm />;
+  const is_manager =
+    localStorage.getItem("is_manager") === "true" ? true : false;
+
+  if (is_manager) {
+    return <NewShopForm />;
+  } else {
+    return <div>This option is only available to managers.</div>;
+  }
 }
 
 export default NewShopPage;
