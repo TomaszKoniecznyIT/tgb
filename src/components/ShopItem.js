@@ -19,7 +19,7 @@ function ShopItem({ shop }) {
           <Link to="sale">Add Sale</Link>
         )}
       </div>
-      <Link to="raport">Report</Link>
+      <Link to="report">Report</Link>
     </div>
   );
 }
