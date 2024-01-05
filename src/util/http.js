@@ -151,3 +151,5 @@ export async function addMonthlyTarget(saleShopData) {
 
   return resData.message;
 }
+
+export async function getDataForReport() {}
