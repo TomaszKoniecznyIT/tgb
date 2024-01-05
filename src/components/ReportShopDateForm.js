@@ -1,6 +1,24 @@
-import { Form } from "react-router-dom";
+import { Form, useParams } from "react-router-dom";
+import { getDataForReport } from "../util/http";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 function ReportShopDateForm() {
+  const params = useParams();
+  const [dayStart, setDayStart] = useState();
+  const [dayEnd, setDayEnd] = useState();
+
+  const { data } = useQuery({
+    queryKey: ["report", params.shopId, dayStart, dayEnd],
+    queryFn: ({ signal }) =>
+      getDataForReport({
+        signal,
+        id: params.shopId,
+        start: dayStart.toISOString().slice(0, 10),
+        end: dayEnd.toISOString().slice(0, 10),
+      }),
+  });
+
   return (
     <>
       <Form>

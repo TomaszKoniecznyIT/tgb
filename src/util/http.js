@@ -152,4 +152,13 @@ export async function addMonthlyTarget(saleShopData) {
   return resData.message;
 }
 
-export async function getDataForReport() {}
+export async function getDataForReport(id, start, end, signal) {
+  const response = await fetch(
+    `http://127.0.0.1:5000/shop/${id}/report?start=${start}&end=${end}`,
+    { signal }
+  );
+
+  const resData = await response.json();
+  console.log(resData);
+  return resData;
+}
