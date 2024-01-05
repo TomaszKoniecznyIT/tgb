@@ -1,40 +1,36 @@
-import { Form, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getDataForReport } from "../util/http";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 
 function ReportShopDateForm() {
   const params = useParams();
-  const [dayStart, setDayStart] = useState();
-  const [dayEnd, setDayEnd] = useState();
+  const id = params.shopId;
 
-  const { data } = useQuery({
-    queryKey: ["report", params.shopId, dayStart, dayEnd],
-    queryFn: ({ signal }) =>
-      getDataForReport({
-        signal,
-        id: params.shopId,
-        start: dayStart.toISOString().slice(0, 10),
-        end: dayEnd.toISOString().slice(0, 10),
-      }),
-  });
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+
+    getDataForReport(data, id);
+  }
 
   return (
     <>
-      <Form>
+      <form onSubmit={handleSubmit}>
         <h1>Report Dates</h1>
         <p>
-          <label htmlFor="start">Report From</label>
-          <input id="start" type="date" name="start" required />
+          <label htmlFor="startDate">Report From</label>
+          <input id="startDate" type="date" name="startDate" required />
         </p>
         <p>
-          <label htmlFor="end">Report To</label>
-          <input id="end" type="date" name="end" required />
+          <label htmlFor="endDate">Report To</label>
+          <input id="endDate" type="date" name="endDate" required />
         </p>
         <div>
           <button type="submit">Create Report</button>
         </div>
-      </Form>
+      </form>
     </>
   );
 }
