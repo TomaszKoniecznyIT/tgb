@@ -131,6 +131,7 @@ export async function getTargetForMonth({ id, month, signal }) {
     throw json({ message: "Could not fetch shops target" }, { status: 500 });
   }
   const { target } = await response.json();
+  console.log(target);
   return target;
 }
 
@@ -152,9 +153,9 @@ export async function addMonthlyTarget(saleShopData) {
   return resData.message;
 }
 
-export async function getDataForReport(data, id) {
+export async function getDataForReport(startDate, endDate, id) {
   const response = await fetch(
-    `http://127.0.0.1:5000/shop/${id}/report?start=${data.startDate}&end=${data.endDate}`
+    `http://127.0.0.1:5000/shop/${id}/report?start=${startDate}&end=${endDate}`
   );
 
   const resData = await response.json();

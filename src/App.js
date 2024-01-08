@@ -17,6 +17,7 @@ import TargetPage, { action as addTarget } from "./pages/Target";
 import SalePage, { action as addSale } from "./pages/Sale";
 import { queryClient } from "./util/http.js";
 import ReportPage from "./pages/Report.js";
+import MonthlyReportPage from "./pages/MonthlyReport.js";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,7 @@ const router = createBrowserRouter([
                     path: "report",
                     element: <ReportPage />,
                   },
+                  { path: "monthly-report", element: <MonthlyReportPage /> },
                 ],
               },
             ],

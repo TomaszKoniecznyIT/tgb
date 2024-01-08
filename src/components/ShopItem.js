@@ -19,7 +19,12 @@ function ShopItem({ shop }) {
           <Link to="sale">Add Sale</Link>
         )}
       </div>
-      <Link to="report">Report</Link>
+      <div>
+        <Link to="report">Report</Link>
+      </div>
+      <div>
+        <Link to="monthly-report">Monthly Report</Link>
+      </div>
     </div>
   );
 }

@@ -13,8 +13,9 @@ function ReportShopDateForm() {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    console.log("aaa", data);
 
-    const respData = await getDataForReport(data, id);
+    const respData = await getDataForReport(data.startDate, data.endDate, id);
     setReportData(respData);
   }
 
