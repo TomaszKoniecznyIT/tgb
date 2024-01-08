@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDataForReport, getTargetForMonth } from "../util/http";
+import MonthReport from "./MonthReport";
 
 function MonthlyReportForm() {
   const [target, setTarget] = useState(null);
   const [salesData, setSalesData] = useState(null);
-  const [month, setMonth] = useState(new Date());
+
   const params = useParams();
   const id = params.shopId;
 
@@ -43,6 +44,7 @@ function MonthlyReportForm() {
           <button type="submit">Create Report</button>
         </div>
       </form>
+      {target && <MonthReport target={target} sales={salesData} />}
     </>
   );
 }
