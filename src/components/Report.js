@@ -7,7 +7,15 @@ function Report({ report }) {
       {
         label: "Daily sales",
         data: report.map((data) => data.total),
-        backgroundColor: ["yellow", "red", "green", "blue"],
+        backgroundColor: [
+          "yellow",
+          "red",
+          "green",
+          "blue",
+          "orange",
+          "brown",
+          "purple",
+        ],
         borderColor: "black",
         borderWidth: 2,
       },
