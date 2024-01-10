@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDataForReport, getTargetForMonth } from "../util/http";
 import MonthReport from "./MonthReport";
@@ -6,6 +6,7 @@ import MonthReport from "./MonthReport";
 function MonthlyReportForm() {
   const [target, setTarget] = useState(null);
   const [salesData, setSalesData] = useState(null);
+  const [days, setDays] = useState(null);
 
   const params = useParams();
   const id = params.shopId;
@@ -21,15 +22,15 @@ function MonthlyReportForm() {
     dateEnd.setMonth(dateEnd.getMonth() + 1);
     dateEnd.setDate(dateEnd.getDate() - 1);
     data.endDate = dateEnd.toISOString().slice(0, 10);
-    console.log(data);
+    setDays((dateEnd - dateStart) / (1000 * 60 * 60 * 24) + 1);
 
     const [responseTarget, responseSalesData] = await Promise.all([
       getTargetForMonth({ id, month: data.month }),
       getDataForReport(data.startDate, data.endDate, id),
     ]);
 
-    setTarget({ responseTarget });
-    setSalesData({ responseSalesData });
+    setSalesData(responseSalesData);
+    setTarget(responseTarget);
   }
 
   return (
@@ -44,7 +45,10 @@ function MonthlyReportForm() {
           <button type="submit">Create Report</button>
         </div>
       </form>
-      {target && <MonthReport target={target} sales={salesData} />}
+      {target && salesData && days && (
+        <MonthReport target={target} sales={salesData} days={days} />
+      )}
+      {!target && days && <p>No target has been set for this month.</p>}
     </>
   );
 }
