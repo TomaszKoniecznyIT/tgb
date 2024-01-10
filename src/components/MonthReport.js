@@ -1,3 +1,4 @@
+import BarChart from "./BarChart";
 import DoughnutChart from "./DoughnutChart";
 
 function MonthReport({ target, sales, days }) {
@@ -6,6 +7,8 @@ function MonthReport({ target, sales, days }) {
 
   const reportArray = sales.report;
   const reportTarget = target.target;
+  const daysInMonth = days;
+  const avgSalesTarget = reportTarget / daysInMonth;
 
   const totalSales = reportArray
     .map((data) => data.total)
@@ -24,6 +27,48 @@ function MonthReport({ target, sales, days }) {
     ],
   };
 
+  const reportSales = {
+    labels: reportArray.map((data) => data.day.slice(0, -13)),
+    datasets: [
+      {
+        label: `Daily sales`,
+        data: reportArray.map((data) => data.total),
+        backgroundColor: [
+          "yellow",
+          "red",
+          "green",
+          "blue",
+          "orange",
+          "brown",
+          "purple",
+        ],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  };
+
+  const reportSalesToTarget = {
+    labels: reportArray.map((data) => data.day.slice(0, -13)),
+    datasets: [
+      {
+        label: `Daily sales`,
+        data: reportArray.map((data) => data.total - avgSalesTarget.toFixed(2)),
+        backgroundColor: [
+          "yellow",
+          "red",
+          "green",
+          "blue",
+          "orange",
+          "brown",
+          "purple",
+        ],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  };
+
   return (
     <>
       <h2>Report for the store: {target.name}</h2>
@@ -35,6 +80,10 @@ function MonthReport({ target, sales, days }) {
         Achievement Percentage: {((totalSales * 100) / reportTarget).toFixed(2)}
       </h2>
       <DoughnutChart chartData={chartAchievementPercentage} />
+      <h2>Daily Sales</h2>
+      <BarChart chartData={reportSales} />
+      <h2>Daily sales to average daily target</h2>
+      <BarChart chartData={reportSalesToTarget} />
     </>
   );
 }
