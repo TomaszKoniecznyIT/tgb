@@ -15,13 +15,25 @@ function MonthReport({ target, sales, days }) {
     .reduce((sum, currentValue) => sum + currentValue, 0);
   const avgSales = totalSales / reportArray.length;
 
-  const chartAchievementPercentage = {
+  const chartTargetAchievement = {
     labels: ["Plan Attainment", "To Achieve The Target"],
     datasets: [
       {
         label: "Plan Attainment",
         data: [totalSales, reportTarget - totalSales],
         backgroundColor: ["orange", "grey"],
+        hoverOffset: 50,
+      },
+    ],
+  };
+
+  const chartAchievementPercentage = {
+    labels: ["Plan Attainment"],
+    datasets: [
+      {
+        label: "Plan Attainment",
+        data: [(totalSales * 100) / reportTarget],
+        backgroundColor: ["green"],
         hoverOffset: 50,
       },
     ],
@@ -77,9 +89,25 @@ function MonthReport({ target, sales, days }) {
       <h2>Total Sales: {totalSales}</h2>
       <h2>Average daily sales: {avgSales.toFixed(2)}</h2>
       <h2>
-        Achievement Percentage: {((totalSales * 100) / reportTarget).toFixed(2)}
+        Achievement Percentage: {((totalSales * 100) / reportTarget).toFixed(2)}{" "}
+        %
       </h2>
+      <DoughnutChart chartData={chartTargetAchievement} />
       <DoughnutChart chartData={chartAchievementPercentage} />
+      <div>
+        {daysInMonth - reportArray.length !== 0 && (
+          <div>
+            <h2>The average daily needed to reach the target.</h2>
+            <p>
+              {daysInMonth - reportArray.length !== 0 &&
+                (
+                  (reportTarget - totalSales) /
+                  (daysInMonth - reportArray.length)
+                ).toFixed(2)}
+            </p>
+          </div>
+        )}
+      </div>
       <h2>Daily Sales</h2>
       <BarChart chartData={reportSales} />
       <h2>Daily sales to average daily target</h2>
