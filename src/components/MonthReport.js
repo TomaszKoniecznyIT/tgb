@@ -15,6 +15,23 @@ function MonthReport({ target, sales, days }) {
     .reduce((sum, currentValue) => sum + currentValue, 0);
   const avgSales = totalSales / reportArray.length;
 
+  const mon = reportArray
+    .filter((data) => data.day.slice(0, 3) === "Mon")
+    .map((data) => data.total)
+    .reduce((sum, currentValue) => sum + currentValue, 0);
+
+  function averageSalesPerDayOfWeek(dayOfWeek, reportArr) {
+    const reportForDayOfWeek = reportArr.filter(
+      (data) => data.day.slice(0, 3) === dayOfWeek
+    );
+    const howManyDays = reportForDayOfWeek.length;
+    const totalForDayOfWeek = reportForDayOfWeek
+      .map((data) => data.total)
+      .reduce((sum, currentValue) => sum + currentValue, 0);
+    if (howManyDays > 0) return totalForDayOfWeek / howManyDays;
+    return 0;
+  }
+
   const chartTargetAchievement = {
     labels: ["Plan Attainment", "To Achieve The Target"],
     datasets: [
@@ -88,6 +105,31 @@ function MonthReport({ target, sales, days }) {
     ],
   };
 
+  const dayOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  const reportAvgSalesPerDay = {
+    labels: dayOfWeek,
+    datasets: [
+      {
+        label: "Day of the week",
+        data: dayOfWeek.map((day) =>
+          averageSalesPerDayOfWeek(day, reportArray)
+        ),
+        backgroundColor: [
+          "yellow",
+          "red",
+          "green",
+          "blue",
+          "orange",
+          "brown",
+          "purple",
+        ],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  };
+
   return (
     <>
       <h2>Report for the store: {target.name}</h2>
@@ -119,6 +161,8 @@ function MonthReport({ target, sales, days }) {
       <BarChart chartData={reportSales} />
       <h2>Daily sales to average daily target</h2>
       <BarChart chartData={reportSalesToTarget} />
+      <h2>Average daily sales on a weekday</h2>
+      <BarChart chartData={reportAvgSalesPerDay} />
     </>
   );
 }

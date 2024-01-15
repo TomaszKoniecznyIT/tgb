@@ -43,7 +43,7 @@ function Report({ report }) {
         </ol>
       </div>
       <h1>Total sales for the specified period.</h1>
-      <div>{totalSales}</div>
+      <div>{totalSales.toFixed(2)}</div>
       <h1>Average daily sales</h1>
       <div>{avgSales.toFixed(2)}</div>
       <div>
