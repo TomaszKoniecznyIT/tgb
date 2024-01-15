@@ -27,13 +27,20 @@ function MonthReport({ target, sales, days }) {
     ],
   };
 
+  const dataForProcentage =
+    totalSales < reportTarget
+      ? [
+          (totalSales * 100) / reportTarget,
+          100 - (totalSales * 100) / reportTarget,
+        ]
+      : [100, 0];
   const chartAchievementPercentage = {
-    labels: ["Plan Attainment"],
+    labels: ["Plan Attainment %"],
     datasets: [
       {
         label: "Plan Attainment",
-        data: [(totalSales * 100) / reportTarget],
-        backgroundColor: ["green"],
+        data: dataForProcentage,
+        backgroundColor: ["green", "transparent"],
         hoverOffset: 50,
       },
     ],
@@ -88,11 +95,11 @@ function MonthReport({ target, sales, days }) {
       <h2>Target: {reportTarget}</h2>
       <h2>Total Sales: {totalSales}</h2>
       <h2>Average daily sales: {avgSales.toFixed(2)}</h2>
+      <DoughnutChart chartData={chartTargetAchievement} />
       <h2>
         Achievement Percentage: {((totalSales * 100) / reportTarget).toFixed(2)}{" "}
         %
       </h2>
-      <DoughnutChart chartData={chartTargetAchievement} />
       <DoughnutChart chartData={chartAchievementPercentage} />
       <div>
         {daysInMonth - reportArray.length !== 0 && (
