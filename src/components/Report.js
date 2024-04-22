@@ -1,4 +1,5 @@
 import BarChart from "./BarChart";
+import classes from "./Report.module.css";
 
 function Report({ report }) {
   const reportData = {
@@ -30,10 +31,10 @@ function Report({ report }) {
   return (
     <>
       <div>
-        <h1>Report Dane</h1>
+        <h1>Report Data</h1>
         <ol>
           {report.map((data) => (
-            <li key={data.id}>
+            <li key={data.id} className={classes.item}>
               <div>
                 <h2>{data.day.slice(0, -13)}</h2>
                 <h3>{data.total}</h3>
