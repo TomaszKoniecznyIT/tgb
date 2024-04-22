@@ -51,7 +51,7 @@ function Report({ report }) {
         <h1>Average daily sales</h1>
         <div>{avgSales.toFixed(2)}</div>
       </div>
-      <div>
+      <div className={classes.chart}>
         <BarChart chartData={reportData} />
       </div>
     </>
