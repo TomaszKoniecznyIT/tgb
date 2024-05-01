@@ -149,7 +149,7 @@ function MonthReport({ target, sales, days }) {
         <h2>Total Sales: </h2>
         <div>{totalSales.toFixed(2)}</div>
       </div>
-      <div className={classes.item}>
+      <div>
         <h2>Average daily sales: </h2>
         <div>{avgSales.toFixed(2)}</div>
       </div>
@@ -163,7 +163,7 @@ function MonthReport({ target, sales, days }) {
       <div className={classes.chart}>
         <DoughnutChart chartData={chartAchievementPercentage} />
       </div>
-      <div>
+      <div className={classes.item}>
         {daysInMonth - reportArray.length !== 0 && (
           <div>
             <h2>The average daily needed to reach the target.</h2>
@@ -178,11 +178,17 @@ function MonthReport({ target, sales, days }) {
         )}
       </div>
       <h2>Daily Sales</h2>
-      <BarChart chartData={reportSales} />
+      <div className={classes.chart}>
+        <BarChart chartData={reportSales} />
+      </div>
       <h2>Daily sales to average daily target</h2>
-      <BarChart chartData={reportSalesToTarget} />
+      <div className={classes.chart}>
+        <BarChart chartData={reportSalesToTarget} />
+      </div>
       <h2>Average daily sales on a weekday</h2>
-      <BarChart chartData={reportAvgSalesPerDay} />
+      <div className={classes.chart}>
+        <BarChart chartData={reportAvgSalesPerDay} />
+      </div>
     </>
   );
 }
