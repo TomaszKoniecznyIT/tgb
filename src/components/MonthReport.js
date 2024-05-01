@@ -153,12 +153,16 @@ function MonthReport({ target, sales, days }) {
         <h2>Average daily sales: </h2>
         <div>{avgSales.toFixed(2)}</div>
       </div>
-      <DoughnutChart chartData={chartTargetAchievement} />
+      <div className={classes.chart}>
+        <DoughnutChart chartData={chartTargetAchievement} />
+      </div>
       <h2>
         Achievement Percentage: {((totalSales * 100) / reportTarget).toFixed(2)}{" "}
         %
       </h2>
-      <DoughnutChart chartData={chartAchievementPercentage} />
+      <div className={classes.chart}>
+        <DoughnutChart chartData={chartAchievementPercentage} />
+      </div>
       <div>
         {daysInMonth - reportArray.length !== 0 && (
           <div>
