@@ -1,5 +1,6 @@
 import BarChart from "./BarChart";
 import DoughnutChart from "./DoughnutChart";
+import classes from "./MonthReport.module.css";
 
 function MonthReport({ target, sales, days }) {
   const month = new Date(target.month);
@@ -132,11 +133,26 @@ function MonthReport({ target, sales, days }) {
 
   return (
     <>
-      <h2>Report for the store: {target.name}</h2>
-      <h2>Report for the month: {monthStr}</h2>
-      <h2>Target: {reportTarget}</h2>
-      <h2>Total Sales: {totalSales}</h2>
-      <h2>Average daily sales: {avgSales.toFixed(2)}</h2>
+      <div className={classes.item}>
+        <h2>Report for the store:</h2>
+        <div>{target.name}</div>
+      </div>
+      <div className={classes.item}>
+        <h2>Report for the month: </h2>
+        <div>{monthStr}</div>
+      </div>
+      <div className={classes.item}>
+        <h2>Target: </h2>
+        <div>{reportTarget}</div>
+      </div>
+      <div className={classes.item}>
+        <h2>Total Sales: </h2>
+        <div>{totalSales.toFixed(2)}</div>
+      </div>
+      <div className={classes.item}>
+        <h2>Average daily sales: </h2>
+        <div>{avgSales.toFixed(2)}</div>
+      </div>
       <DoughnutChart chartData={chartTargetAchievement} />
       <h2>
         Achievement Percentage: {((totalSales * 100) / reportTarget).toFixed(2)}{" "}
