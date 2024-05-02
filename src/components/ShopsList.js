@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import classes from "./ShopsList.module.css";
 
 function ShopsList({ shops }) {
+  console.log(shops);
   return (
     <div className={classes.shops}>
       <h1>All Shops</h1>

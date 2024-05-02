@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import image from "../static/images/shop_home.png";
 
 function HomePage() {
   return (
     <>
       <h1>Sales Tracker</h1>
+      <img src={image} alt="image" />
       <div>
         <h2>Simplify Your Sales Analysis</h2>
         <p>
