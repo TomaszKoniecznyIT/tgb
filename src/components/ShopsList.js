@@ -22,7 +22,7 @@ function ShopsList({ shops }) {
           <li key={shop.id} className={classes.item}>
             <Link to={`/manager/shops/${shop.id}`}>
               <div className={classes.content}>
-                <img src={images[Math.floor(Math.random() * 8)]} />
+                <img src={images[Math.floor(Math.random() * 8)]} alt="img" />
                 <h2>{shop.name}</h2>
                 <h3>{shop.shop_code}</h3>
               </div>
