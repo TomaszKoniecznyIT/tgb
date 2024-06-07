@@ -16,10 +16,10 @@ function MonthReport({ target, sales, days }) {
     .reduce((sum, currentValue) => sum + currentValue, 0);
   const avgSales = totalSales / reportArray.length;
 
-  const mon = reportArray
-    .filter((data) => data.day.slice(0, 3) === "Mon")
-    .map((data) => data.total)
-    .reduce((sum, currentValue) => sum + currentValue, 0);
+  // const mon = reportArray
+  //   .filter((data) => data.day.slice(0, 3) === "Mon")
+  //   .map((data) => data.total)
+  //   .reduce((sum, currentValue) => sum + currentValue, 0);
 
   function averageSalesPerDayOfWeek(dayOfWeek, reportArr) {
     const reportForDayOfWeek = reportArr.filter(

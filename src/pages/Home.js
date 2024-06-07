@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import image from "../static/images/shop_home.png";
 
 function HomePage() {
