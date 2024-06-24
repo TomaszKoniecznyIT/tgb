@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import CustomLink from "../components/CustomLink";
 
 function ShopItem({ shop }) {
   const isManager =
@@ -14,16 +14,16 @@ function ShopItem({ shop }) {
         <p>{shop.shop_code}</p>
       </div>
       <div>
-        {isManager && <Link to="target">Add Target</Link>}
+        {isManager && <CustomLink to="target">Add Target</CustomLink>}
         {!isManager && userEmail === shop.email && (
-          <Link to="sale">Add Sale</Link>
+          <CustomLink to="sale">Add Sale</CustomLink>
         )}
       </div>
       <div>
-        <Link to="report">Report</Link>
+        <CustomLink to="report">Report</CustomLink>
       </div>
       <div>
-        <Link to="monthly-report">Monthly Report</Link>
+        <CustomLink to="monthly-report">Monthly Report</CustomLink>
       </div>
     </div>
   );

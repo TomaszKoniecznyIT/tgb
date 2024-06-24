@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import CustomLink from "../components/CustomLink";
 
 function ManagerPage() {
   const is_manager =
@@ -14,10 +14,10 @@ function ManagerPage() {
         </div>
         <div>
           <p>
-            <Link to="new_shop">Add a new shop</Link>
+            <CustomLink to="new_shop">Add a new shop</CustomLink>
           </p>
           <p>
-            <Link to="shops">Show all shops.</Link>
+            <CustomLink to="shops">Show all shops.</CustomLink>
           </p>
         </div>
       </>

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { getShopByEmail } from "../util/http";
 import { useQuery } from "@tanstack/react-query";
 import CustomLink from "../components/CustomLink";
