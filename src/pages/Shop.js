@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { getShopByEmail } from "../util/http";
 import { useQuery } from "@tanstack/react-query";
+import CustomLink from "../components/CustomLink";
 
 function ShopPage() {
   const email = localStorage.getItem("user_email");
@@ -21,9 +22,9 @@ function ShopPage() {
           <h1>Shop Page</h1>
         </div>
         <div>
-          <Link to={`/manager/shops/${data ? data.id : ""}`}>
+          <CustomLink to={`/manager/shops/${data ? data.id : ""}`}>
             <h3>Shop Detail</h3>
-          </Link>
+          </CustomLink>
         </div>
       </>
     );
