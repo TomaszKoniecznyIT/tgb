@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDataForReport, getTargetForMonth } from "../util/http";
 import MonthReport from "./MonthReport";
+import classes from "./MonthlyReportForm.module.css";
 
 function MonthlyReportForm() {
   const [target, setTarget] = useState(null);
@@ -42,7 +43,9 @@ function MonthlyReportForm() {
           <input id="month" type="month" name="month" required />
         </p>
         <div>
-          <button type="submit">Create Report</button>
+          <button className={classes.button} type="submit">
+            Create Report
+          </button>
         </div>
       </form>
       {target && salesData && days && (
