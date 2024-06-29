@@ -32,16 +32,6 @@ function Report({ report }) {
     <>
       <div>
         <h1>Report Data</h1>
-        <ol>
-          {report.map((data) => (
-            <li key={data.id} className={classes.item}>
-              <div>
-                <h2>{data.day.slice(0, -13)}</h2>
-                <h3>{data.total}</h3>
-              </div>
-            </li>
-          ))}
-        </ol>
       </div>
       <div className={classes.item}>
         <h1>Total sales for the specified period.</h1>
@@ -53,7 +43,17 @@ function Report({ report }) {
       </div>
       <div className={classes.chart}>
         <BarChart chartData={reportData} />
-      </div>
+      </div>{" "}
+      <ol>
+        {report.map((data) => (
+          <li key={data.id} className={classes.item}>
+            <div>
+              <h2>{data.day.slice(0, -13)}</h2>
+              <h3>{data.total}</h3>
+            </div>
+          </li>
+        ))}
+      </ol>
     </>
   );
 }

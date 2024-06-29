@@ -16,11 +16,6 @@ function MonthReport({ target, sales, days }) {
     .reduce((sum, currentValue) => sum + currentValue, 0);
   const avgSales = totalSales / reportArray.length;
 
-  // const mon = reportArray
-  //   .filter((data) => data.day.slice(0, 3) === "Mon")
-  //   .map((data) => data.total)
-  //   .reduce((sum, currentValue) => sum + currentValue, 0);
-
   function averageSalesPerDayOfWeek(dayOfWeek, reportArr) {
     const reportForDayOfWeek = reportArr.filter(
       (data) => data.day.slice(0, 3) === dayOfWeek
@@ -137,54 +132,63 @@ function MonthReport({ target, sales, days }) {
         <h2>Report for the store:</h2>
         <div>{target.name}</div>
       </div>
+
       <div className={classes.item}>
         <h2>Report for the month: </h2>
         <div>{monthStr}</div>
       </div>
+
       <div className={classes.item}>
         <h2>Target: </h2>
         <div>{reportTarget}</div>
       </div>
+
       <div className={classes.item}>
         <h2>Total Sales: </h2>
         <div>{totalSales.toFixed(2)}</div>
       </div>
+
       <div>
         <h2>Average daily sales: </h2>
         <div>{avgSales.toFixed(2)}</div>
       </div>
+
       <div className={classes.chart}>
         <DoughnutChart chartData={chartTargetAchievement} />
       </div>
+
       <h2>
         Achievement Percentage: {((totalSales * 100) / reportTarget).toFixed(2)}{" "}
         %
       </h2>
+
       <div className={classes.chart}>
         <DoughnutChart chartData={chartAchievementPercentage} />
       </div>
-      <div className={classes.item}>
-        {daysInMonth - reportArray.length !== 0 && (
-          <div>
-            <h2>The average daily needed to reach the target.</h2>
-            <p>
-              {daysInMonth - reportArray.length !== 0 &&
-                (
-                  (reportTarget - totalSales) /
-                  (daysInMonth - reportArray.length)
-                ).toFixed(2)}
-            </p>
-          </div>
-        )}
-      </div>
+
+      {daysInMonth - reportArray.length !== 0 && (
+        <div className={classes.item}>
+          <h2>The average daily needed to reach the target.</h2>
+          <p>
+            {daysInMonth - reportArray.length !== 0 &&
+              (
+                (reportTarget - totalSales) /
+                (daysInMonth - reportArray.length)
+              ).toFixed(2)}
+          </p>
+        </div>
+      )}
+
       <h2>Daily Sales</h2>
       <div className={classes.chart}>
         <BarChart chartData={reportSales} />
       </div>
+
       <h2>Daily sales to average daily target</h2>
       <div className={classes.chart}>
         <BarChart chartData={reportSalesToTarget} />
       </div>
+
       <h2>Average daily sales on a weekday</h2>
       <div className={classes.chart}>
         <BarChart chartData={reportAvgSalesPerDay} />
