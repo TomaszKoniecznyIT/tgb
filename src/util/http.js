@@ -6,11 +6,14 @@ import { QueryClient } from "@tanstack/react-query";
 export const queryClient = new QueryClient();
 
 export async function createNewUser(userData) {
-  const response = await fetch("http://127.0.0.1:5000/users/signup", {
-    method: "POST",
-    body: JSON.stringify(userData),
-    headers: { "Content-Type": "application/json" },
-  });
+  const response = await fetch(
+    "https://tgb-48bf0b46415a.herokuapp.com/users/signup",
+    {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 
   const resData = await response.json();
   console.log(resData.message);
@@ -19,11 +22,14 @@ export async function createNewUser(userData) {
 }
 
 export async function login(userData) {
-  const response = await fetch("http://127.0.0.1:5000/users/login", {
-    method: "POST",
-    body: JSON.stringify(userData),
-    headers: { "Content-Type": "application/json" },
-  });
+  const response = await fetch(
+    "https://tgb-48bf0b46415a.herokuapp.com/users/login",
+    {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 
   const resData = await response.json();
 
@@ -45,14 +51,17 @@ export async function login(userData) {
 export async function createNewShop(shopData) {
   const token = getAuthToken();
 
-  const response = await fetch("http://127.0.0.1:5000/new_shop", {
-    method: "POST",
-    body: JSON.stringify(shopData),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-  });
+  const response = await fetch(
+    "https://tgb-48bf0b46415a.herokuapp.com/new_shop",
+    {
+      method: "POST",
+      body: JSON.stringify(shopData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
 
   const resData = await response.json();
   console.log(resData.message);
@@ -61,7 +70,9 @@ export async function createNewShop(shopData) {
 }
 
 export async function getShops() {
-  const response = await fetch("http://127.0.0.1:5000/shops_list");
+  const response = await fetch(
+    "https://tgb-48bf0b46415a.herokuapp.com/shops_list"
+  );
 
   if (!response.ok) {
     throw json({ message: "Could not fetch shops" }, { status: 500 });
@@ -71,7 +82,9 @@ export async function getShops() {
 }
 
 export async function getShop(id) {
-  const response = await fetch("http://127.0.0.1:5000/shops/" + id);
+  const response = await fetch(
+    "https://tgb-48bf0b46415a.herokuapp.com/shops/" + id
+  );
 
   if (!response.ok) {
     throw json({ message: "Could not fetch shops" }, { status: 500 });
@@ -81,7 +94,9 @@ export async function getShop(id) {
 }
 
 export async function getShopByEmail(email) {
-  const response = await fetch(`http://127.0.0.1:5000/shops/email/` + email);
+  const response = await fetch(
+    `https://tgb-48bf0b46415a.herokuapp.com/shops/email/` + email
+  );
 
   if (!response.ok) {
     throw json({ message: "Could not fetch shops" }, { status: 500 });
@@ -92,7 +107,7 @@ export async function getShopByEmail(email) {
 
 export async function getSaleForDay({ id, day, signal }) {
   const response = await fetch(
-    `http://127.0.0.1:5000/shops/${id}/sale?day=${day}`,
+    `https://tgb-48bf0b46415a.herokuapp.com/shops/${id}/sale?day=${day}`,
     { signal }
   );
 
@@ -107,14 +122,17 @@ export async function getSaleForDay({ id, day, signal }) {
 export async function addDailySale(saleShopData) {
   const token = getAuthToken();
 
-  const response = await fetch("http://127.0.0.1:5000/shops/sale", {
-    method: "PUT",
-    body: JSON.stringify(saleShopData),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-  });
+  const response = await fetch(
+    "https://tgb-48bf0b46415a.herokuapp.com/shops/sale",
+    {
+      method: "PUT",
+      body: JSON.stringify(saleShopData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
 
   const resData = await response.json();
   console.log(resData.message);
@@ -124,7 +142,7 @@ export async function addDailySale(saleShopData) {
 
 export async function getTargetForMonth({ id, month, signal }) {
   const response = await fetch(
-    `http://127.0.0.1:5000/shops/${id}/target?month=${month}`,
+    `https://tgb-48bf0b46415a.herokuapp.com/shops/${id}/target?month=${month}`,
     { signal }
   );
   if (!response.ok) {
@@ -138,14 +156,17 @@ export async function getTargetForMonth({ id, month, signal }) {
 export async function addMonthlyTarget(saleShopData) {
   const token = getAuthToken();
 
-  const response = await fetch("http://127.0.0.1:5000/shops/target", {
-    method: "PUT",
-    body: JSON.stringify(saleShopData),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-  });
+  const response = await fetch(
+    "https://tgb-48bf0b46415a.herokuapp.com/shops/target",
+    {
+      method: "PUT",
+      body: JSON.stringify(saleShopData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
 
   const resData = await response.json();
   console.log(resData.message);
@@ -155,7 +176,7 @@ export async function addMonthlyTarget(saleShopData) {
 
 export async function getDataForReport(startDate, endDate, id) {
   const response = await fetch(
-    `http://127.0.0.1:5000/shop/${id}/report?start=${startDate}&end=${endDate}`
+    `https://tgb-48bf0b46415a.herokuapp.com/shop/${id}/report?start=${startDate}&end=${endDate}`
   );
 
   const resData = await response.json();
