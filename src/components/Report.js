@@ -43,7 +43,7 @@ function Report({ report }) {
       </div>
       <div className={classes.chart}>
         <BarChart chartData={reportData} />
-      </div>{" "}
+      </div>
       <ol>
         {report.map((data) => (
           <li key={data.id} className={classes.item}>
