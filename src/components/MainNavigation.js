@@ -21,6 +21,16 @@ function MainNavigation() {
               Home
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              About
+            </NavLink>
+          </li>
           {token && (
             <>
               {is_manager && (
