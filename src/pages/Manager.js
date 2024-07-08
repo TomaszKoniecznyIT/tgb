@@ -10,7 +10,7 @@ function ManagerPage() {
     content = (
       <>
         <div>
-          <h1>Menager Page</h1>
+          <h1>Manager's Page</h1>
         </div>
         <div>
           <p>
