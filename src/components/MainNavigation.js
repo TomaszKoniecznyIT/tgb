@@ -25,7 +25,6 @@ function MainNavigation() {
             <>
               {is_manager && (
                 <>
-                  {" "}
                   <li>
                     <NavLink
                       to="/manager"
@@ -64,16 +63,18 @@ function MainNavigation() {
               )}
             </>
           )}
-          <li>
-            <NavLink
-              to="/auth/singup"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Singup
-            </NavLink>
-          </li>
+          {!token && (
+            <li>
+              <NavLink
+                to="/auth/singup"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Singup
+              </NavLink>
+            </li>
+          )}
           {!token && (
             <li>
               <NavLink
