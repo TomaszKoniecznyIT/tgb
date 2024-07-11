@@ -1,6 +1,8 @@
+import classes from "./AboutContent.module.css";
+
 export default function AboutContent() {
   return (
-    <>
+    <div className={classes.container}>
       <div>
         <h1>Welcome to our Sales Tracking Application!</h1>
         <p>
@@ -99,6 +101,6 @@ export default function AboutContent() {
           PostgreSQL database, ensuring reliability and accessibility.
         </p>
       </div>
-    </>
+    </div>
   );
 }
