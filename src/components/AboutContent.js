@@ -2,7 +2,7 @@ import classes from "./AboutContent.module.css";
 
 export default function AboutContent() {
   return (
-    <div className={classes.container}>
+    <div className={classes.aboutContentContainer}>
       <div>
         <h1>Welcome to our Sales Tracking Application!</h1>
         <p>
