@@ -40,10 +40,16 @@ function MonthlyReportForm() {
         <h1>Report Dates</h1>
         <p>
           <label htmlFor="month">Report From</label>
-          <input id="month" type="month" name="month" required />
+          <input
+            className={classes.formDate}
+            id="month"
+            type="month"
+            name="month"
+            required
+          />
         </p>
         <div>
-          <button className={classes.button} type="submit">
+          <button className={classes.formButton} type="submit">
             Create Report
           </button>
         </div>
