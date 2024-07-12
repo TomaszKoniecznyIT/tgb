@@ -100,6 +100,11 @@ export default function AboutContent() {
           All sales data and user information are securely stored in a
           PostgreSQL database, ensuring reliability and accessibility.
         </p>
+        <h3>Automatic Logout:</h3>
+        <p>
+          For security reasons, the application will automatically log you out
+          after a set period of time.
+        </p>
       </div>
     </div>
   );
