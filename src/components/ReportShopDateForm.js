@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { getDataForReport } from "../util/http";
 import { useState } from "react";
 import Report from "./Report";
+import classes from "./ReportShopDateForm.module.css";
 
 function ReportShopDateForm() {
   const [reportData, setReportData] = useState();
@@ -13,7 +14,6 @@ function ReportShopDateForm() {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log("aaa", data);
 
     const respData = await getDataForReport(data.startDate, data.endDate, id);
     setReportData(respData);
@@ -25,14 +25,29 @@ function ReportShopDateForm() {
         <h1>Report Dates</h1>
         <p>
           <label htmlFor="startDate">Report From</label>
-          <input id="startDate" type="date" name="startDate" required />
+          <input
+            className={classes.formDate}
+            id="startDate"
+            type="date"
+            name="startDate"
+            required
+          />
         </p>
         <p>
           <label htmlFor="endDate">Report To</label>
-          <input id="endDate" type="date" name="endDate" required />
+
+          <input
+            className={classes.formDate}
+            id="endDate"
+            type="date"
+            name="endDate"
+            required
+          />
         </p>
         <div>
-          <button type="submit">Create Report</button>
+          <button className={classes.formButton} type="submit">
+            Create Report
+          </button>
         </div>
       </form>
       {reportData && <Report report={reportData.report} />}

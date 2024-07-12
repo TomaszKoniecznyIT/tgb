@@ -34,11 +34,13 @@ function Report({ report }) {
         <h1>Report Data</h1>
       </div>
       <div className={classes.item}>
-        <h1>Total sales for the specified period.</h1>
+        <h1 className={classes.reportTitle}>
+          Total sales for the specified period.
+        </h1>
         <div>{totalSales.toFixed(2)}</div>
       </div>
       <div className={classes.item}>
-        <h1>Average daily sales</h1>
+        <h1 className={classes.reportTitle}>Average daily sales</h1>
         <div>{avgSales.toFixed(2)}</div>
       </div>
       <div className={classes.chart}>
