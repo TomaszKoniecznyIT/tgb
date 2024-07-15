@@ -46,3 +46,9 @@
 .actions a:hover {
   background-color: var(--color-gray-800);
 }
+
+.dayButton {
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 10rem;
+}

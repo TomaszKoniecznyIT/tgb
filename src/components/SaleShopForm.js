@@ -40,10 +40,18 @@ function SaleShopForm() {
       <Form method="put" className={classes.form}>
         <h1>Daily Sales</h1>
         <div>
-          <button type="button" onClick={handlePreviousDay}>
+          <button
+            className={classes.dayButton}
+            type="button"
+            onClick={handlePreviousDay}
+          >
             previous day
           </button>
-          <button type="button" onClick={handleNextDay}>
+          <button
+            className={classes.dayButton}
+            type="button"
+            onClick={handleNextDay}
+          >
             next day
           </button>
         </div>

@@ -39,10 +39,18 @@ function TargetShopForm() {
       <Form method="put" className={classes.form}>
         <h1>Monthly Target</h1>
         <div>
-          <button type="button" onClick={handlePreviousMonth}>
+          <button
+            className={classes.dayButton}
+            type="button"
+            onClick={handlePreviousMonth}
+          >
             previous month
           </button>
-          <button type="button" onClick={handleNextMonth}>
+          <button
+            className={classes.dayButton}
+            type="button"
+            onClick={handleNextMonth}
+          >
             next month
           </button>
         </div>
