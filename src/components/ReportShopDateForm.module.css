@@ -5,10 +5,10 @@
 }
 
 .formButton {
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: var(--color-gray-300);
-  padding: 1rem 1rem;
-  font-size: 1.2em;
+  padding: 0.7rem 1rem;
+  font-size: 1.1em;
 }
 
 .formButton:hover {
