@@ -11,7 +11,7 @@ export default function AboutContent() {
         </p>
       </div>
       <div>
-        <h2>Idea for an application.</h2>
+        <h2>The idea of the app.</h2>
         <p>
           The idea for this app originated from my current job. I needed a
           simple application to monitor the progress of monthly sales goals in
