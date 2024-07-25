@@ -6,7 +6,9 @@ function MonthReport({ target, sales, days }) {
   const month = new Date(target.month);
   const monthStr = month.toLocaleString("default", { month: "long" });
 
-  const reportArray = sales.report;
+  const reportArray = sales.report.sort(
+    (a, b) => new Date(a.day) - new Date(b.day)
+  );
   const reportTarget = target.target;
   const daysInMonth = days;
   const avgSalesTarget = reportTarget / daysInMonth;

@@ -149,7 +149,6 @@ export async function getTargetForMonth({ id, month, signal }) {
     throw json({ message: "Could not fetch shops target" }, { status: 500 });
   }
   const { target } = await response.json();
-  console.log(target);
   return target;
 }
 
@@ -180,6 +179,5 @@ export async function getDataForReport(startDate, endDate, id) {
   );
 
   const resData = await response.json();
-  console.log(resData);
   return resData;
 }
