@@ -9,8 +9,14 @@
   background-color: var(--color-gray-300);
   padding: 0.7rem 1rem;
   font-size: 1.1em;
+  margin-top: 20px;
 }
 
 .formButton:hover {
   background-color: var(--color-primary-700);
+}
+
+.form {
+  margin-top: 10px;
+  font-size: 120%;
 }

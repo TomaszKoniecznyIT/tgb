@@ -38,11 +38,11 @@ function Report({ report }) {
         <h1 className={classes.reportTitle}>
           Total sales for the specified period.
         </h1>
-        <div>{totalSales.toFixed(2)}</div>
+        <h2 className={classes.number}>{totalSales.toFixed(2)}</h2>
       </div>
       <div className={classes.item}>
         <h1 className={classes.reportTitle}>Average daily sales</h1>
-        <div>{avgSales.toFixed(2)}</div>
+        <h2 className={classes.number}>{avgSales.toFixed(2)}</h2>
       </div>
       <div className={classes.chart}>
         <BarChart chartData={reportData} />

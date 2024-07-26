@@ -23,27 +23,29 @@ function ReportShopDateForm() {
     <>
       <form onSubmit={handleSubmit}>
         <h1>Report Dates</h1>
-        <p>
-          <label htmlFor="startDate">Report From</label>
-          <input
-            className={classes.formDate}
-            id="startDate"
-            type="date"
-            name="startDate"
-            required
-          />
-        </p>
-        <p>
-          <label htmlFor="endDate">Report To</label>
+        <div>
+          <p className={classes.form}>
+            <label htmlFor="startDate">Report From</label>
+            <input
+              className={classes.formDate}
+              id="startDate"
+              type="date"
+              name="startDate"
+              required
+            />
+          </p>
+          <p className={classes.form}>
+            <label htmlFor="endDate">Report To</label>
 
-          <input
-            className={classes.formDate}
-            id="endDate"
-            type="date"
-            name="endDate"
-            required
-          />
-        </p>
+            <input
+              className={classes.formDate}
+              id="endDate"
+              type="date"
+              name="endDate"
+              required
+            />
+          </p>
+        </div>
         <div>
           <button className={classes.formButton} type="submit">
             Create Report
