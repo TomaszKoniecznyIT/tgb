@@ -2,12 +2,13 @@ import BarChart from "./BarChart";
 import classes from "./Report.module.css";
 
 function Report({ report }) {
+  const reportSorted = report.sort((a, b) => new Date(a.day) - new Date(b.day));
   const reportData = {
-    labels: report.map((data) => data.day.slice(0, -13)),
+    labels: reportSorted.map((data) => data.day.slice(0, -13)),
     datasets: [
       {
         label: "Daily sales",
-        data: report.map((data) => data.total),
+        data: reportSorted.map((data) => data.total),
         backgroundColor: [
           "yellow",
           "red",
@@ -23,7 +24,7 @@ function Report({ report }) {
     ],
   };
 
-  const totalSales = report
+  const totalSales = reportSorted
     .map((data) => data.total)
     .reduce((sum, currentValue) => sum + currentValue, 0);
   const avgSales = totalSales / report.length;
@@ -47,7 +48,7 @@ function Report({ report }) {
         <BarChart chartData={reportData} />
       </div>
       <ol>
-        {report.map((data) => (
+        {reportSorted.map((data) => (
           <li key={data.id} className={classes.item}>
             <div>
               <h2>{data.day.slice(0, -13)}</h2>
