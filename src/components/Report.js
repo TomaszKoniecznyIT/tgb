@@ -52,7 +52,7 @@ function Report({ report }) {
           <li key={data.id} className={classes.item}>
             <div>
               <h2>{data.day.slice(0, -13)}</h2>
-              <h3>{data.total}</h3>
+              <h2>{data.total}</h2>
             </div>
           </li>
         ))}
