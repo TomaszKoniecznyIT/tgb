@@ -16,9 +16,13 @@
   padding: 0.25rem;
 }
 
+.form button {
+  margin-top: 1rem;
+}
+
 .actions {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: flex-end;
   align-items: center;
 }

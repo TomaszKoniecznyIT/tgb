@@ -1,6 +1,6 @@
 import { Form } from "react-router-dom";
 
-import classes from "./NewUserForm.module.css";
+import classes from "./LoginForm.module.css";
 
 function LoginForm() {
   return (
