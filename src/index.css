@@ -1,4 +1,6 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -55,7 +57,13 @@ main {
 }
 
 h1 {
+  margin: 40px;
   color: var(--color-primary-900);
+}
+
+h2 {
+  margin: 20px;
+  color: var(--color-primary-00);
 }
 
 label {

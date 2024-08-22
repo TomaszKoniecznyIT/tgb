@@ -35,24 +35,22 @@ function Report({ report }) {
         <h1>Report Data</h1>
       </div>
       <div className={classes.item}>
-        <h1 className={classes.reportTitle}>
-          Total sales for the specified period.
-        </h1>
-        <h2 className={classes.number}>{totalSales.toFixed(2)}</h2>
+        <h2>Total sales for the specified period.</h2>
+        <div>{totalSales.toFixed(2)}</div>
       </div>
       <div className={classes.item}>
-        <h1 className={classes.reportTitle}>Average daily sales</h1>
-        <h2 className={classes.number}>{avgSales.toFixed(2)}</h2>
+        <h2 className={classes.reportTitle}>Average daily sales</h2>
+        <div className={classes.number}>{avgSales.toFixed(2)}</div>
       </div>
-      <div className={classes.chart}>
+      <div className={`${classes.chart} ${classes.bar}`}>
         <BarChart chartData={reportData} />
       </div>
       <ol>
         {reportSorted.map((data) => (
-          <li key={data.id} className={classes.item}>
-            <div>
+          <li key={data.id}>
+            <div className={classes.item}>
               <h2>{data.day.slice(0, -13)}</h2>
-              <h2>{data.total}</h2>
+              <div>{data.total}</div>
             </div>
           </li>
         ))}
