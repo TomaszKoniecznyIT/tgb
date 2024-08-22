@@ -150,12 +150,12 @@ function MonthReport({ target, sales, days }) {
         <div>{totalSales.toFixed(2)}</div>
       </div>
 
-      <div>
+      <div className={classes.item}>
         <h2>Average daily sales: </h2>
         <div>{avgSales.toFixed(2)}</div>
       </div>
 
-      <div className={classes.chart}>
+      <div className={`${classes.chart} ${classes.doughnut}`}>
         <DoughnutChart chartData={chartTargetAchievement} />
       </div>
 
@@ -164,35 +164,35 @@ function MonthReport({ target, sales, days }) {
         %
       </h2>
 
-      <div className={classes.chart}>
+      <div className={`${classes.chart} ${classes.doughnut}`}>
         <DoughnutChart chartData={chartAchievementPercentage} />
       </div>
 
       {daysInMonth - reportArray.length !== 0 && (
         <div className={classes.item}>
           <h2>The average daily needed to reach the target.</h2>
-          <p>
+          <div>
             {daysInMonth - reportArray.length !== 0 &&
               (
                 (reportTarget - totalSales) /
                 (daysInMonth - reportArray.length)
               ).toFixed(2)}
-          </p>
+          </div>
         </div>
       )}
 
       <h2>Daily Sales</h2>
-      <div className={classes.chart}>
+      <div className={`${classes.chart} ${classes.bar}`}>
         <BarChart chartData={reportSales} />
       </div>
 
       <h2>Daily sales to average daily target</h2>
-      <div className={classes.chart}>
+      <div className={`${classes.chart} ${classes.bar}`}>
         <BarChart chartData={reportSalesToTarget} />
       </div>
 
       <h2>Average daily sales on a weekday</h2>
-      <div className={classes.chart}>
+      <div className={`${classes.chart} ${classes.bar}`}>
         <BarChart chartData={reportAvgSalesPerDay} />
       </div>
     </>
