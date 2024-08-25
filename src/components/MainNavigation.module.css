@@ -23,13 +23,15 @@
 
 .navButton {
   font-size: 20px;
-  padding: 1px 4px;
+  padding: 1px 8px;
   border-radius: 4px;
   font: inherit;
   cursor: pointer;
-  background-color: var(--color-primary-200);
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
 }
 
 .navButton:hover {
   background-color: var(--color-primary-800);
+  color: var(--color-primary-100);
 }
